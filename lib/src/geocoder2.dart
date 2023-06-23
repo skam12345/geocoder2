@@ -22,25 +22,32 @@ class Geocoder2 {
       String state = "";
       String streetNumber = "";
       String countryCode = "";
+      String premise = "";
+      String load = "";
+      String regionGu = "";
       var addressComponent = fetch.results.first.addressComponents;
       for (var i = 0; i < addressComponent.length; i++) {
-        if (addressComponent[i].types.contains("administrative_area_level_2")) {
+        if (addressComponent[i].types.contains("administrative_area_level_1")) {
           city = addressComponent[i].longName;
         }
         if (addressComponent[i].types.contains("country")) {
           country = addressComponent[i].longName;
-        }
-        if (addressComponent[i].types.contains("country")) {
           countryCode = addressComponent[i].shortName;
         }
         if (addressComponent[i].types.contains("postal_code")) {
           postalCode = addressComponent[i].longName;
         }
-        if (addressComponent[i].types.contains("administrative_area_level_1")) {
-          state = addressComponent[i].longName;
-        }
         if (addressComponent[i].types.contains("street_number")) {
           streetNumber = addressComponent[i].longName;
+        }
+        if (addressComponent[i].types.contains("premise")) {
+          premise = addressComponent[i].longName;
+        }
+        if(addressComponent[i].types.contains("sublocality_level_4")) {
+          load = addressComponent[i].longName;
+        }
+        if(addressComponent[i].types.contains("sublocality_level_1")) {
+          regionGu = addressComponent[i].longName;
         }
       }
 
@@ -54,6 +61,9 @@ class Geocoder2 {
         state: state,
         streetNumber: streetNumber,
         countryCode: countryCode,
+        premise: premise,
+        load: load,
+        regionGu: regionGu,
       );
     } else {
       return null as GeoData;
@@ -113,6 +123,9 @@ class Geocoder2 {
         state: state,
         countryCode: countryCode,
         streetNumber: streetNumber,
+        premise: '',
+        load: '',
+        regionGu: '',
       );
     } else {
       return null as GeoData;

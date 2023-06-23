@@ -1,23 +1,32 @@
 ///Model class of the data.
 class GeoData {
   GeoData({
-    required this.address,
+    this.address,
     required this.city,
-    required this.country,
-    required this.latitude,
-    required this.longitude,
-    required this.postalCode,
-    required this.state,
-    required this.countryCode,
-    required this.streetNumber,
+    this.country,
+    this.latitude,
+    this.longitude,
+    this.postalCode,
+    this.state,
+    this.countryCode,
+    this.streetNumber,
+    required this.premise,
+    required this.load,
+    required this.regionGu,
+    
+
   });
-  String address;
+  String? address;
   String city;
-  String country;
-  double latitude;
-  double longitude;
-  String postalCode;
-  String state;
-  String countryCode;
-  String streetNumber;
+  String? country;
+  double? latitude;
+  double? longitude;
+  String? postalCode;
+  String? state;
+  String? countryCode;
+  String? streetNumber;
+  String premise;
+  String load;
+  String regionGu;
+
 }
