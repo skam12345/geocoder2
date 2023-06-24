@@ -28,7 +28,9 @@ class Geocoder2 {
       var addressComponent = fetch.results.first.addressComponents;
       for (var i = 0; i < addressComponent.length; i++) {
         if (addressComponent[i].types.contains("administrative_area_level_1")) {
-          city = addressComponent[i].longName;
+          if(addressComponent[i].longName.contains("광역시") || addressComponent[i].longName.contains("특별시") || addressComponent[i].longName.contains("도")) {
+            city = addressComponent[i].longName;
+          }
         }
         if (addressComponent[i].types.contains("country")) {
           country = addressComponent[i].longName;
@@ -47,7 +49,9 @@ class Geocoder2 {
           load = addressComponent[i].longName;
         }
         if(addressComponent[i].types.contains("sublocality_level_1")) {
-          regionGu = addressComponent[i].longName;
+          if(addressComponent[i].longName.contains("구")) {
+            regionGu = addressComponent[i].longName;
+          }
         }
       }
 
