@@ -14,7 +14,7 @@ class Geocoder2 {
     var response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       String data = await response.bodyBytes.toString();
-      print(data);
+      print(response.body);
       FetchGeocoder fetch = fetchGeocoderFromJson(data);
       String city = "";
       String country = "";
