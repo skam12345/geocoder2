@@ -28,7 +28,6 @@ class Geocoder2 {
       String regionGu = "";
       var addressComponent = fetch.results.first.addressComponents;
       for (var i = 0; i < addressComponent.length; i++) {
-        print(addressComponent[i].types);
         if (addressComponent[i].types.contains("administrative_area_level_1")) {
           if(addressComponent[i].longName.contains("광역시") || addressComponent[i].longName.contains("특별시") || addressComponent[i].longName.contains("도")) {
             if(city == "") {
