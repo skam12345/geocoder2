@@ -30,6 +30,7 @@ class Geocoder2 {
         if (addressComponent[i].types.contains("administrative_area_level_1")) {
           if(addressComponent[i].longName.contains("광역시") || addressComponent[i].longName.contains("특별시") || addressComponent[i].longName.contains("도")) {
             if(city == "") {
+              print(addressComponent[i].longName);
               city = addressComponent[i].longName;
             }
           }
@@ -46,16 +47,19 @@ class Geocoder2 {
         }
         if (addressComponent[i].types.contains("premise")) {
           if(premise == "") {
+            print(addressComponent[i].longName);
             premise = addressComponent[i].longName;
           }
         }
         if(addressComponent[i].types.contains("sublocality_level_4")) {
           if(load == "") {
+            print(addressComponent[i].longName);
             load = addressComponent[i].longName;
           }
         }
         if(addressComponent[i].types.contains("sublocality_level_1")) {
           if(regionGu == "") {
+            print(addressComponent[i].longName);
             regionGu = addressComponent[i].longName;
           }
         }
