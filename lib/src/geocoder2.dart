@@ -27,6 +27,7 @@ class Geocoder2 {
       String regionGu = "";
       var addressComponent = fetch.results.first.addressComponents;
       for (var i = 0; i < addressComponent.length; i++) {
+        print(addressComponent[i].types);
         if (addressComponent[i].types.contains("administrative_area_level_1")) {
           if(addressComponent[i].longName.contains("광역시") || addressComponent[i].longName.contains("특별시") || addressComponent[i].longName.contains("도")) {
             if(city == "") {
@@ -51,7 +52,7 @@ class Geocoder2 {
             premise = addressComponent[i].longName;
           }
         }
-        if(addressComponent[i].types.contains("sublocality_level_4")) {
+        if(addressComponent[i].types.contains("sublocality_level_2")) {
           if(load == "") {
             print(addressComponent[i].longName);
             load = addressComponent[i].longName;
