@@ -29,7 +29,9 @@ class Geocoder2 {
       for (var i = 0; i < addressComponent.length; i++) {
         if (addressComponent[i].types.contains("administrative_area_level_1")) {
           if(addressComponent[i].longName.contains("광역시") || addressComponent[i].longName.contains("특별시") || addressComponent[i].longName.contains("도")) {
-            city = addressComponent[i].longName;
+            if(city == "") {
+              city = addressComponent[i].longName;
+            }
           }
         }
         if (addressComponent[i].types.contains("country")) {
@@ -43,13 +45,17 @@ class Geocoder2 {
           streetNumber = addressComponent[i].longName;
         }
         if (addressComponent[i].types.contains("premise")) {
-          premise = addressComponent[i].longName;
+          if(premise == "") {
+            premise = addressComponent[i].longName;
+          }
         }
         if(addressComponent[i].types.contains("sublocality_level_4")) {
-          load = addressComponent[i].longName;
+          if(load == "") {
+            load = addressComponent[i].longName;
+          }
         }
         if(addressComponent[i].types.contains("sublocality_level_1")) {
-          if(addressComponent[i].longName.contains("구")) {
+          if(regionGu == "") {
             regionGu = addressComponent[i].longName;
           }
         }
