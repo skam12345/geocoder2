@@ -11,10 +11,9 @@ class Geocoder2 {
     String? language,
   }) async {
     var url = language != null ? 'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$googleMapApiKey&language=$language' : 'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$googleMapApiKey';
-    var request = http.Request('GET', Uri.parse(url));
-    http.StreamedResponse response = await request.send();
+    var response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
-      String data = await response.stream.bytesToString();
+      String data = await response.bodyBytes.toString();
       print(data);
       FetchGeocoder fetch = fetchGeocoderFromJson(data);
       String city = "";
