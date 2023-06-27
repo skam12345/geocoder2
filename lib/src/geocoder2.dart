@@ -53,7 +53,7 @@ class Geocoder2 {
             premise = addressComponent[0].longName;
           }
         }
-        if(addressComponent[0].types.contains("sublocality_level_2")) {
+        if(addressComponent[0].types.contains("sublocality_level_4")) {
           if(load == "") {
             print(addressComponent[0].longName);
             load = addressComponent[0].longName;
