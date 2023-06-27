@@ -26,43 +26,43 @@ class Geocoder2 {
       String premise = "";
       String load = "";
       String regionGu = "";
-      var addressComponent = fetch.results.first.addressComponents;
-      for (var i = 0; i < addressComponent.length; i++) {
-        print(addressComponent[i].types);
-        if (addressComponent[i].types.contains("administrative_area_level_1")) {
-          if(addressComponent[i].longName.contains("광역시") || addressComponent[i].longName.contains("특별시") || addressComponent[i].longName.contains("도")) {
+      for (var i = 0; i < fetch.results.length; i++) {
+        var addressComponent = fetch.results[i].addressComponents;
+        print(addressComponent[0].types);
+        if (addressComponent[0].types.contains("administrative_area_level_1")) {
+          if(addressComponent[0].longName.contains("광역시") || addressComponent[i].longName.contains("특별시") || addressComponent[i].longName.contains("도")) {
             if(city == "") {
-              print(addressComponent[i].longName);
-              city = addressComponent[i].longName;
+              print(addressComponent[0].longName);
+              city = addressComponent[0].longName;
             }
           }
         }
-        if (addressComponent[i].types.contains("country")) {
-          country = addressComponent[i].longName;
-          countryCode = addressComponent[i].shortName;
+        if (addressComponent[0].types.contains("country")) {
+          country = addressComponent[0].longName;
+          countryCode = addressComponent[0].shortName;
         }
-        if (addressComponent[i].types.contains("postal_code")) {
-          postalCode = addressComponent[i].longName;
+        if (addressComponent[0].types.contains("postal_code")) {
+          postalCode = addressComponent[0].longName;
         }
-        if (addressComponent[i].types.contains("street_number")) {
-          streetNumber = addressComponent[i].longName;
+        if (addressComponent[0].types.contains("street_number")) {
+          streetNumber = addressComponent[0].longName;
         }
-        if (addressComponent[i].types.contains("premise")) {
+        if (addressComponent[0].types.contains("premise")) {
           if(premise == "") {
-            print(addressComponent[i].longName);
-            premise = addressComponent[i].longName;
+            print(addressComponent[0].longName);
+            premise = addressComponent[0].longName;
           }
         }
-        if(addressComponent[i].types.contains("sublocality_level_2")) {
+        if(addressComponent[0].types.contains("sublocality_level_2")) {
           if(load == "") {
-            print(addressComponent[i].longName);
-            load = addressComponent[i].longName;
+            print(addressComponent[0].longName);
+            load = addressComponent[0].longName;
           }
         }
-        if(addressComponent[i].types.contains("sublocality_level_1")) {
+        if(addressComponent[0].types.contains("sublocality_level_1")) {
           if(regionGu == "") {
-            print(addressComponent[i].longName);
-            regionGu = addressComponent[i].longName;
+            print(addressComponent[0].longName);
+            regionGu = addressComponent[0].longName;
           }
         }
       }
