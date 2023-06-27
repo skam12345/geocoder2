@@ -11,11 +11,12 @@ class Geocoder2 {
     String? language,
   }) async {
     var url = language != null ? 'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$googleMapApiKey&language=$language' : 'https://maps.googleapis.com/maps/api/geocode/json?latlng=$latitude,$longitude&key=$googleMapApiKey';
-    var response = await http.get(Uri.parse(url));
+    var request = http.Request('GET', Uri.parse(url));
+    http.StreamedResponse response = await request.send();
     if (response.statusCode == 200) {
-      String data = await response.bodyBytes.toString();
-      print(response.body);
+      String data = await response.stream.bytesToString();
       FetchGeocoder fetch = fetchGeocoderFromJson(data);
+      print(fetch);
       String city = "";
       String country = "";
       String postalCode = "";
@@ -27,6 +28,7 @@ class Geocoder2 {
       String regionGu = "";
       var addressComponent = fetch.results.first.addressComponents;
       for (var i = 0; i < addressComponent.length; i++) {
+        print(addressComponent[i].types);
         if (addressComponent[i].types.contains("administrative_area_level_1")) {
           if(addressComponent[i].longName.contains("광역시") || addressComponent[i].longName.contains("특별시") || addressComponent[i].longName.contains("도")) {
             if(city == "") {
