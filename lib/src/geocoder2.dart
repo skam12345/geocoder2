@@ -30,7 +30,7 @@ class Geocoder2 {
         var addressComponent = fetch.results[i].addressComponents;
         print(addressComponent[0].types);
         if (addressComponent[0].types.contains("administrative_area_level_1")) {
-          if(addressComponent[0].longName.contains("광역시") || addressComponent[i].longName.contains("특별시") || addressComponent[i].longName.contains("도")) {
+          if(addressComponent[0].longName.contains("광역시") || addressComponent[0].longName.contains("특별시") || addressComponent[0].longName.contains("도")) {
             if(city == "") {
               print(addressComponent[0].longName);
               city = addressComponent[0].longName;
