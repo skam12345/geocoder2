@@ -16,7 +16,7 @@ class Geocoder2 {
     if (response.statusCode == 200) {
       String data = await response.stream.bytesToString();
       FetchGeocoder fetch = fetchGeocoderFromJson(data);
-      print(fetch);
+      print(fetch.results);
       String city = "";
       String country = "";
       String postalCode = "";
